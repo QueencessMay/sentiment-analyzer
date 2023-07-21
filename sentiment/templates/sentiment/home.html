@@ -24,7 +24,8 @@
       <h2 class="negative">NEGATIVE</h2> -->
     </div>
     
-    <form class="input-container">
+    <form method="post" class="input-container">
+      {% csrf_token %}
       <h1 class="title">Sentiment<br/>Analyzer</h1>
       <p>Enter a comment and we will let you know if it is<br/>POSITIVE or NEGATIVE</p>
       <div class="input-field">
