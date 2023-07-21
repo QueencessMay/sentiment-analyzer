@@ -1,0 +1,84 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+#app {
+  font-family: 'Times New Roman';
+  font-size: 1.2rem;
+  color: white;
+  background: linear-gradient(135deg, #5E2FBD 0%, #3E33A4 95.31%);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+[class$="container"] {
+  padding-left: 1.5rem;
+  padding-right: 3rem;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  row-gap: 3rem;
+  /* bootleg dash XD */
+  border-left: 2px rgba(255, 255, 255, 0.5) dashed;
+  height: 100%;
+}
+
+.title {
+  font-family: 'Nixie One', cursive;
+  font-size: 3rem;
+}
+
+p {
+  font-family: 'Signika Negative', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+}
+
+.input-field {
+  display: flex;
+  align-items: center;
+  column-gap: 1rem;
+  border-bottom: 1px rgba(255, 255, 255, 0.5) solid;
+  width: 25rem;
+  max-width: 90%;
+  padding: 0.5rem;
+}
+input {
+  outline: none;
+  border: none;
+  background-color: transparent;
+  color: white;
+  font-family: 'Taviraj', serif;
+  font-size: 0.9rem;
+  flex: 1;
+}
+input::placeholder { 
+  color: white;
+  opacity: 0.6; 
+}
+
+button {
+  background: linear-gradient(90deg, rgb(96, 66, 254) 0%, rgb(222, 0, 124) 100%);
+  color: white;
+  border: none;
+  border-radius: 1.5rem;
+  padding: 0.5rem;
+  width: 13rem;
+  max-width: 90%;
+  font-family: 'Signika Negative', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+}
