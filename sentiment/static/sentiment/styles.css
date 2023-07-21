@@ -24,6 +24,42 @@ body {
   padding-right: 3rem;
 }
 
+.results-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+h2{  
+  font-size: 50px;
+  font-weight: 300;
+  margin-bottom: 2rem;
+  margin-top: 3rem;
+}
+
+.positive{
+  color: #03FF3B;
+}
+
+.negative{
+  color: #FF4003;
+}
+
+/* images */
+.start, .positive-img, .negative-img, h2{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.start{  
+  width: 60%;
+}
+
+.positive-img{
+  width: 70%;
+}
+
 .input-container {
   display: flex;
   flex-direction: column;
@@ -41,8 +77,11 @@ body {
   font-size: 3rem;
 }
 
-p {
+p, h2 {
   font-family: 'Signika Negative', sans-serif;
+}
+
+p{  
   font-size: 1.1rem;
   font-weight: 300;
 }
