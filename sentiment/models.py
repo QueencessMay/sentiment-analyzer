@@ -1,3 +1,7 @@
 from django.db import models
 
-# Create your models here.
+class Sentiment(models.Model):
+    input = models.CharField(max_length=100)
+    result = models.CharField(max_length=50)
+    def __str__(self):
+        return self.result

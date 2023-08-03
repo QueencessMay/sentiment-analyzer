@@ -13,28 +13,35 @@
   <body id="app">
     <!-- RESULTS -->
     <div class="results-container">
-      <!--image after opening -->
-      <img class="start" src="https://scontent.fmnl4-3.fna.fbcdn.net/v/t1.15752-9/362621056_567177988751640_983384748221933740_n.png?_nc_cat=110&ccb=1-7&_nc_sid=ae9488&_nc_eui2=AeGANaYMx5i4jvp_enDtff6rEUvoNbj8FmkRS-g1uPwWaUyzB5QeF4oQg_BOdXnItO1tf4d49vkvZcKIW0ZLu5QB&_nc_ohc=Y0DsVZhaEhsAX9TcUXs&_nc_ht=scontent.fmnl4-3.fna&oh=03_AdSqBLA93EodTnEOuuy1crY2GaVNUa-khPWgZqK9Slajvw&oe=64E178D6"/>
-      <!--<h2>RESULT</h2> -->
-      <!--if positive result -->
-      <!--<img class="positive-img" src="https://scontent.fmnl4-6.fna.fbcdn.net/v/t1.15752-9/361657333_233836976222188_8791164240714022103_n.png?_nc_cat=108&ccb=1-7&_nc_sid=ae9488&_nc_eui2=AeEKUDp51OmiCYiKq0KPMzQ66zuDaN7CHqDrO4No3sIeoJx3hseqEVAdJXYwewrkCdVPRYxZPKRwqs5xFc0PNSCK&_nc_ohc=ISSPjbiB3icAX9jJG63&_nc_ht=scontent.fmnl4-6.fna&oh=03_AdQguWlAUI6T7CLhRM3BNI4WRw1nkiKhW8xW4IkJaCJ1vQ&oe=64E177DF"/> 
-      <h2 class="positive">POSITIVE</h2> -->
-      <!--if negative result -->
-      <!--<img class="negative-img" src="https://scontent.fmnl4-4.fna.fbcdn.net/v/t1.15752-9/361875140_962152851554651_8837378279542275812_n.png?_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_eui2=AeFszSJag7n7OV-V1Nf48byFWf9t-ji9nppZ_236OL2emjBpWqj_SyC7wwoy2XrqgBEBMVpWWG6r-w6Phld0fXo6&_nc_ohc=2hkN5VKPU5MAX94e4G8&_nc_ht=scontent.fmnl4-4.fna&oh=03_AdQ6ZfUEL37UiQhGf8yvQqXXCFyjn35dDo4TrlaqBlrmdg&oe=64E164F2"/> 
-      <h2 class="negative">NEGATIVE</h2> -->
+      <!-- Display the result if it exists -->
+      {% if result %}
+        {% if result == "positive" %}
+          <img class="positive-img" src="https://scontent.fmnl4-6.fna.fbcdn.net/v/t1.15752-9/361657333_233836976222188_8791164240714022103_n.png?_nc_cat=108&ccb=1-7&_nc_sid=ae9488&_nc_eui2=AeEKUDp51OmiCYiKq0KPMzQ66zuDaN7CHqDrO4No3sIeoJx3hseqEVAdJXYwewrkCdVPRYxZPKRwqs5xFc0PNSCK&_nc_ohc=ISSPjbiB3icAX9jJG63&_nc_ht=scontent.fmnl4-6.fna&oh=03_AdQguWlAUI6T7CLhRM3BNI4WRw1nkiKhW8xW4IkJaCJ1vQ&oe=64E177DF"/> 
+          <h2 class="positive">POSITIVE</h2>
+        {% elif result == "negative" %}
+          <img class="negative-img" src="https://scontent.fmnl4-4.fna.fbcdn.net/v/t1.15752-9/361875140_962152851554651_8837378279542275812_n.png?_nc_cat=102&ccb=1-7&_nc_sid=ae9488&_nc_eui2=AeFszSJag7n7OV-V1Nf48byFWf9t-ji9nppZ_236OL2emjBpWqj_SyC7wwoy2XrqgBEBMVpWWG6r-w6Phld0fXo6&_nc_ohc=2hkN5VKPU5MAX94e4G8&_nc_ht=scontent.fmnl4-4.fna&oh=03_AdQ6ZfUEL37UiQhGf8yvQqXXCFyjn35dDo4TrlaqBlrmdg&oe=64E164F2"/> 
+          <h2 class="negative">NEGATIVE</h2>
+        {% endif %}
+      {% else %}
+        <!-- Display the image after opening -->
+        <img class="start" src="https://scontent.fmnl4-3.fna.fbcdn.net/v/t1.15752-9/362621056_567177988751640_983384748221933740_n.png?_nc_cat=110&ccb=1-7&_nc_sid=ae9488&_nc_eui2=AeGANaYMx5i4jvp_enDtff6rEUvoNbj8FmkRS-g1uPwWaUyzB5QeF4oQg_BOdXnItO1tf4d49vkvZcKIW0ZLu5QB&_nc_ohc=Y0DsVZhaEhsAX9TcUXs&_nc_ht=scontent.fmnl4-3.fna&oh=03_AdSqBLA93EodTnEOuuy1crY2GaVNUa-khPWgZqK9Slajvw&oe=64E178D6"/>
+      {% endif %}
     </div>
     
-    <form class="input-container">
+    <form class="input-container" method="POST" action="{% url 'sentiment_view' %}">
+      <!-- Add the CSRF token for security -->
+      {% csrf_token %}
       <h1 class="title">Sentiment<br/>Analyzer</h1>
       <p>Enter a comment and we will let you know if it is<br/>POSITIVE or NEGATIVE</p>
       <div class="input-field">
         <ion-icon name="chatbox-outline"></ion-icon>
-        <input type="text" name="input" placeholder="Enter a comment"></input>
+        <!-- Display the form input field -->
+        {{ form.input }}
       </div>
       <button type="submit">Analyze</button>
     </form>
-
+  
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-  </body>
+    <script nomodule src="https://unpkg.com/ionicons/dist/ionicons.js"></script>
+  </body>  
 </html>
