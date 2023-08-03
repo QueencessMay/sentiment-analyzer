@@ -5,7 +5,7 @@ import tensorflow as tf
 from transformers import DistilBertTokenizerFast, TFDistilBertForSequenceClassification
 
 tokenizer = DistilBertTokenizerFast.from_pretrained('distilbert-base-uncased')
-model_path = './sentiment/beshybert/'
+model_path = 'FiouReia/beshybert'
 beshybert = TFDistilBertForSequenceClassification.from_pretrained(model_path)
 
 def home(request):
