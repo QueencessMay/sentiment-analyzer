@@ -1,7 +1,5 @@
-from django.forms import ModelForm
-from .models import Sentiment
+# sentiment/forms.py
+from django import forms
 
-class SentimentForm(ModelForm):
-    class Meta:
-        model = Sentiment
-        fields = '__all__'
+class SentimentForm(forms.Form):
+    input = forms.CharField(max_length=500, widget=forms.TextInput(attrs={'placeholder': 'Enter a comment'}))

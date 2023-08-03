@@ -15,6 +15,7 @@
     <div class="results-container">
       <!-- Display the result if it exists -->
       {% if result %}
+        <h2 class="">RESULT</h2>
         {% if result == "positive" %}
           <img class="positive-img" src="https://scontent.fmnl4-6.fna.fbcdn.net/v/t1.15752-9/361657333_233836976222188_8791164240714022103_n.png?_nc_cat=108&ccb=1-7&_nc_sid=ae9488&_nc_eui2=AeEKUDp51OmiCYiKq0KPMzQ66zuDaN7CHqDrO4No3sIeoJx3hseqEVAdJXYwewrkCdVPRYxZPKRwqs5xFc0PNSCK&_nc_ohc=ISSPjbiB3icAX9jJG63&_nc_ht=scontent.fmnl4-6.fna&oh=03_AdQguWlAUI6T7CLhRM3BNI4WRw1nkiKhW8xW4IkJaCJ1vQ&oe=64E177DF"/> 
           <h2 class="positive">POSITIVE</h2>
@@ -28,7 +29,7 @@
       {% endif %}
     </div>
     
-    <form class="input-container" method="POST" action="{% url 'sentiment_view' %}">
+    <form class="input-container" method="POST" action="{% url 'home' %}">
       <!-- Add the CSRF token for security -->
       {% csrf_token %}
       <h1 class="title">Sentiment<br/>Analyzer</h1>
@@ -36,7 +37,7 @@
       <div class="input-field">
         <ion-icon name="chatbox-outline"></ion-icon>
         <!-- Display the form input field -->
-        {{ form.input }}
+        <input type="text" name="input" placeholder="Enter a comment"></input>
       </div>
       <button type="submit">Analyze</button>
     </form>
