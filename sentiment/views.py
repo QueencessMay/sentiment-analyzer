@@ -18,7 +18,7 @@ def home(request):
         result = perform_sentiment_analysis(input_text)
       except Exception as e:
         print(f"Error during sentiment analysis: {e}")
-        result = "Error occurred"
+        result = "error"
 
       return render(request, "sentiment/home.html", {"form": form, "result": result})
   else:
